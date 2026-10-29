@@ -1,6 +1,6 @@
 import { queryOptions } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import type { Conversation, Message, NewsItem, Post, PostWithMeta, Review, ReviewWithAuthor } from "./types";
+import type { Conversation, Message, NewsItem, PostWithMeta, Profile, ReviewWithAuthor } from "./types";
 
 const AUTHOR_FIELDS = "username, display_name, avatar_url";
 
@@ -135,13 +135,13 @@ export const profileByUsernameQuery = (username: string) =>
   queryOptions({
     queryKey: ["profile", username],
     enabled: username.length > 0,
-    queryFn: async (): Promise<Post.Profile | null> => {
+    queryFn: async (): Promise<Profile | null> => {
       const { data, error } = await supabase
         .from("profiles")
         .select("*")
         .eq("username", username)
         .maybeSingle();
       if (error) throw error;
-      return (data ?? null) as Post.Profile | null;
+      return (data ?? null) as Profile | null;
     },
   });
