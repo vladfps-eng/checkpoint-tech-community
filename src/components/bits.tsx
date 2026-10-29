@@ -21,7 +21,15 @@ export function timeAgo(iso: string) {
   }
 }
 
-export function Avatar({ name, url, size = 36 }: { name: string | null; url?: string | null; size?: number }) {
+export function Avatar({
+  name,
+  url,
+  size = 36,
+}: {
+  name: string | null | undefined;
+  url: string | null | undefined;
+  size?: number;
+}) {
   const initials = (name ?? "?").slice(0, 2).toUpperCase();
   if (url) {
     return (
