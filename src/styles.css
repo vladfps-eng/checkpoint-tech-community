@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0e14;
+  --foreground: #e8eef5;
+  --panel: #111823;
+  --panel-2: #0d131c;
+  --border: #1e2938;
+  --border-strong: #2b3a4e;
+  --muted: #93a1b5;
+  --accent: #34f5c5;
+  --accent-foreground: #06231a;
+  --gold: #ffb224;
+  --danger: #ff6b6b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-danger: var(--danger);
+  --font-display: "Chakra Petch", sans-serif;
+  --font-sans: "Work Sans", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+}
+
+/* Subtle circuit-grid backdrop for hero surfaces */
+@utility grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(52, 245, 197, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(52, 245, 197, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@utility panel-card {
+  background-color: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+}
+
+@utility btn-accent {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  font-weight: 600;
+  border-radius: 0.6rem;
+  transition: filter 150ms ease;
+  &:hover {
+    filter: brightness(1.1);
+  }
+}
+
+@utility btn-outline {
+  border: 1px solid var(--border-strong);
+  color: var(--foreground);
+  border-radius: 0.6rem;
+  transition: border-color 150ms ease, background-color 150ms ease;
+  &:hover {
+    border-color: var(--accent);
+    background-color: rgba(52, 245, 197, 0.06);
+  }
+}
